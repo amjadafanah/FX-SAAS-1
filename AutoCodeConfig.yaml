@@ -2,6 +2,20 @@
 genPolicy: "Create"
 openAPISpec: "http://13.56.210.25/v2/api-docs"
 generators:
+- type: "anonymous_invalid"
+  assertions:
+  - "@StatusCode != 200"
+  severity: "Critical"
+  database: null
+  inactive: true
+  matches: []
+- type: "auth_invalid"
+  assertions:
+  - "@StatusCode != 200"
+  severity: "Critical"
+  database: null
+  inactive: true
+  matches: []
 - type: "ddos"
   assertions:
   - "@Response.errors == true"
@@ -17,20 +31,6 @@ generators:
     resourceSamples: null
     queryParams: null
     bodyProperties: null
-- type: "anonymous_invalid"
-  assertions:
-  - "@StatusCode != 200"
-  severity: "Critical"
-  database: null
-  inactive: true
-  matches: []
-- type: "auth_invalid"
-  assertions:
-  - "@StatusCode != 200"
-  severity: "Critical"
-  database: null
-  inactive: true
-  matches: []
 - type: "XSS_Injection"
   assertions:
   - "@StatusCode != 200"
